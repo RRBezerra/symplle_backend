@@ -1,0 +1,122 @@
+{
+  "currency": {
+    "symbol": "€",
+    "decimal_separator": ",",
+    "thousands_separator": ".",
+    "format": "{amount} {symbol}",
+    "decimals": 2,
+    "currencies": {
+      "EUR": "€",
+      "USD": "$",
+      "BRL": "R$",
+      "GBP": "£",
+      "JPY": "¥",
+      "CAD": "CA$",
+      "AUD": "A$"
+    }
+  },
+  "date": {
+    "short": "dd/MM/yyyy",
+    "medium": "dd 'de' MMM 'de' yyyy",
+    "long": "dd 'de' MMMM 'de' yyyy",
+    "time_12": "HH:mm",
+    "time_24": "HH:mm",
+    "datetime": "dd 'de' MMM 'de' yyyy 'a las' HH:mm",
+    "weekdays": ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+    "weekdays_short": ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+    "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+    "months_short": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+    "am_pm": ["", ""],
+    "first_day_of_week": 1
+  },
+  "numbers": {
+    "decimal_separator": ",",
+    "thousands_separator": ".",
+    "negative_format": "-{number}",
+    "percentage_format": "{number}%"
+  },
+  "phone": {
+    "format": "{prefix} {number} {suffix}",
+    "country_code": "+34",
+    "mask": "### ### ###",
+    "validation_regex": "^\\+?34\\d{9}$",
+    "examples": [
+      "612 345 678",
+      "+34 612 345 678",
+      "91 234 5678"
+    ]
+  },
+  "address": {
+    "format": "{street}, {number}\n{zip} {city}\n{province}, España",
+    "zip_code_format": "#####",
+    "provinces": ["Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ceuta", "Ciudad Real", "Córdoba", "Cuenca", "Girona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Jaén", "La Coruña", "La Rioja", "León", "Lleida", "Lugo", "Madrid", "Málaga", "Melilla", "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"]
+  },
+  "social": {
+    "distance_units": "kilometers",
+    "temperature_unit": "celsius",
+    "measurement_system": "metric"
+  },
+  "relative_time": {
+    "now": "ahora",
+    "seconds": "hace {n} segundo|hace {n} segundos",
+    "minute": "hace {n} minuto|hace {n} minutos",
+    "hour": "hace {n} hora|hace {n} horas",
+    "day": "hace {n} día|hace {n} días",
+    "week": "hace {n} semana|hace {n} semanas",
+    "month": "hace {n} mes|hace {n} meses",
+    "year": "hace {n} año|hace {n} años",
+    "future": {
+      "seconds": "en {n} segundo|en {n} segundos",
+      "minute": "en {n} minuto|en {n} minutos",
+      "hour": "en {n} hora|en {n} horas",
+      "day": "en {n} día|en {n} días",
+      "week": "en {n} semana|en {n} semanas",
+      "month": "en {n} mes|en {n} meses",
+      "year": "en {n} año|en {n} años"
+    }
+  },
+  "validation": {
+    "email_regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    "password_min_length": 8,
+    "username_min_length": 3,
+    "username_max_length": 30,
+    "username_regex": "^[a-zA-Z0-9_]+$",
+    "dni_regex": "^\\d{8}[A-Z]$",
+    "nie_regex": "^[XYZ]\\d{7}[A-Z]$"
+  },
+  "file_size": {
+    "units": ["B", "KB", "MB", "GB", "TB"],
+    "decimal_places": 2
+  },
+  "professional": {
+    "salary_format": "{min_amount}€ - {max_amount}€",
+    "salary_period": "al año",
+    "experience_levels": [
+      "Junior",
+      "Intermedio", 
+      "Senior",
+      "Experto",
+      "Directivo"
+    ],
+    "job_types": [
+      "Tiempo completo",
+      "Tiempo parcial",
+      "Por proyectos",
+      "Freelance",
+      "Prácticas"
+    ]
+  },
+  "documents": {
+    "dni": {
+      "format": "########A",
+      "label": "DNI"
+    },
+    "nie": {
+      "format": "X#######A",
+      "label": "NIE"
+    },
+    "nif": {
+      "label": "NIF"
+    }
+  }
+}

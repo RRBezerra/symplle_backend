@@ -1,0 +1,105 @@
+{
+  "currency": {
+    "symbol": "$",
+    "decimal_separator": ".",
+    "thousands_separator": ",",
+    "format": "{symbol}{amount}",
+    "decimals": 2,
+    "currencies": {
+      "USD": "$",
+      "BRL": "R$",
+      "EUR": "€",
+      "GBP": "£",
+      "JPY": "¥",
+      "CAD": "CA$",
+      "AUD": "A$"
+    }
+  },
+  "date": {
+    "short": "MM/dd/yyyy",
+    "medium": "MMM dd, yyyy",
+    "long": "MMMM dd, yyyy",
+    "time_12": "h:mm a",
+    "time_24": "HH:mm",
+    "datetime": "MMM dd, yyyy 'at' h:mm a",
+    "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "weekdays_short": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "months_short": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "am_pm": ["AM", "PM"],
+    "first_day_of_week": 0
+  },
+  "numbers": {
+    "decimal_separator": ".",
+    "thousands_separator": ",",
+    "negative_format": "-{number}",
+    "percentage_format": "{number}%"
+  },
+  "phone": {
+    "format": "({area}) {prefix}-{number}",
+    "country_code": "+1",
+    "mask": "(###) ###-####",
+    "validation_regex": "^\\+?1?\\d{10}$",
+    "examples": [
+      "(555) 123-4567",
+      "+1 (555) 123-4567"
+    ]
+  },
+  "address": {
+    "format": "{street}\n{city}, {state} {zip}",
+    "zip_code_format": "#####",
+    "zip_code_extended": "#####-####"
+  },
+  "social": {
+    "distance_units": "miles",
+    "temperature_unit": "fahrenheit",
+    "measurement_system": "imperial"
+  },
+  "relative_time": {
+    "now": "now",
+    "seconds": "{n} second ago|{n} seconds ago",
+    "minute": "{n} minute ago|{n} minutes ago",
+    "hour": "{n} hour ago|{n} hours ago",
+    "day": "{n} day ago|{n} days ago",
+    "week": "{n} week ago|{n} weeks ago",
+    "month": "{n} month ago|{n} months ago",
+    "year": "{n} year ago|{n} years ago",
+    "future": {
+      "seconds": "in {n} second|in {n} seconds",
+      "minute": "in {n} minute|in {n} minutes",
+      "hour": "in {n} hour|in {n} hours",
+      "day": "in {n} day|in {n} days",
+      "week": "in {n} week|in {n} weeks",
+      "month": "in {n} month|in {n} months",
+      "year": "in {n} year|in {n} years"
+    }
+  },
+  "validation": {
+    "email_regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    "password_min_length": 8,
+    "username_min_length": 3,
+    "username_max_length": 30,
+    "username_regex": "^[a-zA-Z0-9_]+$"
+  },
+  "file_size": {
+    "units": ["B", "KB", "MB", "GB", "TB"],
+    "decimal_places": 2
+  },
+  "professional": {
+    "salary_format": "{symbol}{min_amount} - {symbol}{max_amount}",
+    "salary_period": "per year",
+    "experience_levels": [
+      "Entry Level",
+      "Mid Level", 
+      "Senior Level",
+      "Executive Level"
+    ],
+    "job_types": [
+      "Full-time",
+      "Part-time", 
+      "Contract",
+      "Freelance",
+      "Internship"
+    ]
+  }
+}

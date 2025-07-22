@@ -1,0 +1,436 @@
+{
+  "app": {
+    "name": "Symplle",
+    "tagline": "Conecte. Crie. Cresça.",
+    "welcome": "Bem-vindo ao Symplle"
+  },
+  "auth": {
+    "validation": {
+      "fields_required": "Todos os campos são obrigatórios",
+      "user_exists": "Email ou username já está em uso",
+      "email_password_required": "Email e senha são obrigatórios",
+      "username_email_required": "Username e email são obrigatórios"
+    },    
+    "login": {
+      "title": "Entrar",
+      "email_placeholder": "Digite seu e-mail",
+      "password_placeholder": "Digite sua senha",
+      "submit": "Entrar",
+      "success": "Bem-vindo de volta, {username}!",
+      "error": "E-mail ou senha inválidos",
+      "forgot_password": "Esqueceu sua senha?",
+      "no_account": "Não tem uma conta?",
+      "signup_link": "Cadastre-se aqui"
+    },
+    "signup": {
+      "title": "Cadastrar",
+      "username_placeholder": "Escolha um nome de usuário",
+      "email_placeholder": "Digite seu e-mail",
+      "password_placeholder": "Crie uma senha",
+      "confirm_password_placeholder": "Confirme sua senha",
+      "submit": "Criar Conta",
+      "success": "Conta criada com sucesso!",
+      "error": "Falha ao criar conta",
+      "have_account": "Já tem uma conta?",
+      "login_link": "Entre aqui",
+      "terms": "Ao se cadastrar, você concorda com nossos Termos de Serviço e Política de Privacidade"
+    },
+    "verification": {
+      "email": {
+        "title": "Verifique seu E-mail",
+        "subtitle": "Enviamos um código de verificação para {email}",
+        "code_placeholder": "Digite o código de 6 dígitos",
+        "submit": "Verificar E-mail",
+        "success": "E-mail verificado com sucesso!",
+        "error": "Código de verificação inválido",
+        "resend": "Reenviar código",
+        "resend_success": "Código de verificação enviado novamente"
+      },
+      "phone": {
+        "title": "Verifique seu Telefone",
+        "subtitle": "Enviamos um código de verificação para {phone}",
+        "code_placeholder": "Digite o código de 6 dígitos",
+        "submit": "Verificar Telefone",
+        "success": "Telefone verificado com sucesso!",
+        "error": "Código de verificação inválido",
+        "resend": "Reenviar código",
+        "resend_success": "Código de verificação enviado novamente"
+      }
+    },
+    "password": {
+      "forgot": {
+        "title": "Esqueci a Senha",
+        "subtitle": "Digite seu e-mail para redefinir sua senha",
+        "email_placeholder": "Digite seu e-mail",
+        "submit": "Enviar Link de Redefinição",
+        "success": "Link de redefinição enviado para seu e-mail",
+        "error": "E-mail não encontrado"
+      },
+      "reset": {
+        "title": "Redefinir Senha",
+        "subtitle": "Digite sua nova senha",
+        "password_placeholder": "Nova senha",
+        "confirm_password_placeholder": "Confirme a nova senha",
+        "submit": "Redefinir Senha",
+        "success": "Senha redefinida com sucesso!",
+        "error": "Falha ao redefinir senha"
+      }
+    },
+    "logout": {
+      "success": "Saiu com sucesso",
+      "confirm": "Tem certeza que deseja sair?"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "edit": "Editar Perfil",
+    "save": "Salvar Alterações",
+    "cancel": "Cancelar",
+    "username": "Nome de usuário",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "first_name": "Nome",
+    "last_name": "Sobrenome",
+    "bio": "Biografia",
+    "location": "Localização",
+    "website": "Site",
+    "birthday": "Data de nascimento",
+    "language": "Idioma",
+    "privacy": "Configurações de Privacidade",
+    "notifications": "Configurações de Notificações",
+    "account": "Configurações da Conta",
+    "delete_account": "Excluir Conta",
+    "updated": "Perfil atualizado com sucesso",
+    "photo": {
+      "upload": "Enviar Foto",
+      "change": "Alterar Foto",
+      "remove": "Remover Foto",
+      "success": "Foto atualizada com sucesso",
+      "error": "Falha ao enviar foto"
+    }
+  },
+  "chat": {
+    "title": "Conversas",
+    "new_chat": "Nova Conversa",
+    "search": "Buscar conversas",
+    "empty": "Nenhuma conversa ainda",
+    "typing": "{user} está digitando...",
+    "online": "Online",
+    "offline": "Offline",
+    "last_seen": "Visto por último {time}",
+    "delivered": "Entregue",
+    "read": "Lida",
+    "message": {
+      "placeholder": "Digite uma mensagem...",
+      "send": "Enviar",
+      "edit": "Editar Mensagem",
+      "delete": "Excluir Mensagem",
+      "reply": "Responder",
+      "forward": "Encaminhar",
+      "copy": "Copiar Texto",
+      "deleted": "Esta mensagem foi excluída"
+    },
+    "group": {
+      "create": "Criar Grupo",
+      "name": "Nome do Grupo",
+      "add_members": "Adicionar Membros",
+      "remove_member": "Remover Membro",
+      "leave": "Sair do Grupo",
+      "admin": "Administrador"
+    }
+  },
+  "social": {
+    "feed": "Feed",
+    "posts": "Posts",
+    "create_post": "Criar Post",
+    "share_post": "Compartilhar Post",
+    "edit_post": "Editar Post",
+    "delete_post": "Excluir Post",
+    "like": "Curtir",
+    "unlike": "Descurtir",
+    "comment": "Comentar",
+    "share": "Compartilhar",
+    "save": "Salvar",
+    "saved": "Salvo",
+    "followers": "Seguidores",
+    "following": "Seguindo",
+    "follow": "Seguir",
+    "unfollow": "Deixar de seguir",
+    "block": "Bloquear Usuário",
+    "report": "Denunciar Post",
+    "hashtags": "Hashtags",
+    "mentions": "Menções",
+    "trending": "Em alta",
+    "explore": "Explorar"
+  },
+  "jobs": {
+    "title": "Empregos",
+    "search": "Buscar empregos",
+    "filters": "Filtros",
+    "location": "Localização",
+    "salary": "Salário",
+    "job_type": "Tipo de emprego",
+    "experience": "Nível de experiência",
+    "company": "Empresa",
+    "apply": "Candidatar-se",
+    "applied": "Candidatado",
+    "save_job": "Salvar Vaga",
+    "saved_jobs": "Vagas Salvas",
+    "my_applications": "Minhas Candidaturas",
+    "job_details": "Detalhes da Vaga",
+    "requirements": "Requisitos",
+    "benefits": "Benefícios",
+    "description": "Descrição da Vaga",
+    "posted": "Publicado {time}",
+    "expires": "Expira em {date}",
+    "network": "Rede Profissional",
+    "connections": "Conexões",
+    "recommendations": "Recomendações",
+    "skills": "Habilidades",
+    "experience_title": "Experiência",
+    "education": "Formação",
+    "certifications": "Certificações"
+  },
+  "gallery": {
+    "title": "Galeria",
+    "photos": "Fotos",
+    "videos": "Vídeos",
+    "albums": "Álbuns",
+    "upload": "Enviar",
+    "create_album": "Criar Álbum",
+    "album_name": "Nome do Álbum",
+    "select_photos": "Selecionar Fotos",
+    "delete": "Excluir",
+    "download": "Baixar",
+    "share": "Compartilhar",
+    "edit": "Editar",
+    "view_original": "Ver Original",
+    "slideshow": "Apresentação",
+    "uploaded": "Enviado {time}",
+    "size": "Tamanho: {size}",
+    "resolution": "Resolução: {resolution}"
+  },
+  "videos": {
+    "title": "Vídeos",
+    "upload": "Enviar Vídeo",
+    "play": "Reproduzir",
+    "pause": "Pausar",
+    "fullscreen": "Tela cheia",
+    "volume": "Volume",
+    "quality": "Qualidade",
+    "speed": "Velocidade de reprodução",
+    "likes": "Curtidas",
+    "views": "Visualizações",
+    "duration": "Duração",
+    "uploaded": "Enviado {time}",
+    "creator": "Criador",
+    "subscribe": "Inscrever-se",
+    "subscribed": "Inscrito",
+    "playlist": "Adicionar à playlist",
+    "download": "Baixar",
+    "report": "Denunciar vídeo"
+  },
+  "countries": {
+    "select": "Selecionar País",
+    "search": "Buscar países",
+    "popular": "Países Populares"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "mark_read": "Marcar como lida",
+    "mark_all_read": "Marcar todas como lidas",
+    "clear": "Limpar todas",
+    "empty": "Nenhuma notificação",
+    "types": {
+      "message": "Nova mensagem de {user}",
+      "like": "{user} curtiu seu post",
+      "comment": "{user} comentou em seu post",
+      "follow": "{user} começou a seguir você",
+      "job_match": "Nova vaga compatível: {job}",
+      "connection": "Novo pedido de conexão de {user}"
+    }
+  },
+  "search": {
+    "placeholder": "Buscar...",
+    "results": "Resultados da busca",
+    "no_results": "Nenhum resultado encontrado",
+    "recent": "Buscas recentes",
+    "clear_recent": "Limpar recentes",
+    "filters": "Filtros",
+    "sort_by": "Ordenar por",
+    "relevance": "Relevância",
+    "date": "Data",
+    "popularity": "Popularidade"
+  },
+  "settings": {
+    "title": "Configurações",
+    "account": "Conta",
+    "privacy": "Privacidade",
+    "notifications": "Notificações",
+    "language": "Idioma e região",
+    "theme": "Tema",
+    "data": "Dados e armazenamento",
+    "help": "Ajuda e suporte",
+    "about": "Sobre",
+    "logout": "Sair",
+    "version": "Versão {version}"
+  },
+  "errors": {
+    "network": "Erro de conexão de rede",
+    "server": "Erro do servidor. Tente novamente mais tarde",
+    "not_found": "Conteúdo não encontrado",
+    "unauthorized": "Você não está autorizado a realizar esta ação",
+    "forbidden": "Acesso negado",
+    "validation": "Verifique suas informações e tente novamente",
+    "upload": "Falha no envio do arquivo",
+    "generic": "Algo deu errado. Tente novamente"
+  },
+  "success": {
+    "saved": "Salvo com sucesso",
+    "updated": "Atualizado com sucesso",
+    "created": "Criado com sucesso",
+    "deleted": "Excluído com sucesso",
+    "uploaded": "Enviado com sucesso",
+    "sent": "Enviado com sucesso"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "share": "Compartilhar",
+    "copy": "Copiar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "loading": "Carregando...",
+    "retry": "Tentar novamente",
+    "yes": "Sim",
+    "no": "Não",
+    "confirm": "Confirmar",
+    "optional": "Opcional",
+    "required": "Obrigatório",
+    "or": "ou",
+    "and": "e",
+    "more": "Mais",
+    "less": "Menos",
+    "show_all": "Mostrar tudo",
+    "show_less": "Mostrar menos"
+  },
+  "upload": {
+    "error": {
+      "no_file": "Nenhum arquivo foi enviado",
+      "user_id_required": "ID do usuário é obrigatório",
+      "invalid_user_id": "ID do usuário inválido",
+      "user_chat_required": "ID do usuário e chat são obrigatórios",
+      "file_path_required": "Caminho do arquivo é obrigatório",
+      "file_not_found": "Arquivo não encontrado",
+      "permission_denied": "Permissão negada para este arquivo",
+      "unexpected": "Erro inesperado: {error}"
+    },
+    "validation": {
+      "no_file": "Nenhum arquivo selecionado",
+      "invalid_filename": "Nome do arquivo inválido",
+      "invalid_extension": "Extensão '{extension}' não permitida. Use: {allowed}",
+      "invalid_mime_type": "Tipo de arquivo '{mime_type}' não suportado",
+      "file_too_large": "Arquivo muito grande ({size}). Tamanho máximo: {max_size}",
+      "empty_file": "Arquivo está vazio"
+    },
+    "avatar": {
+      "success": "Avatar enviado e processado com sucesso"
+    },
+    "post": {
+      "success": "Imagem do post enviada com sucesso"
+    },
+    "document": {
+      "success": "Documento enviado com sucesso"
+    },
+    "chat": {
+      "success": "Arquivo de chat enviado com sucesso"
+    },
+    "delete": {
+      "success": "Arquivo removido com sucesso"
+    },
+    "optimize": {
+      "success": "Imagem otimizada com sucesso"
+    },
+    "files": {
+      "retrieved": "Arquivos recuperados com sucesso"
+    },
+    "info": {
+      "retrieved": "Informações do sistema de upload"
+    }
+  },
+  "image": {
+    "validation": {
+      "unsupported_format": "Formato '{format}' não suportado",
+      "too_small": "Imagem muito pequena (mínimo: 10x10 pixels)",
+      "too_large": "Imagem muito grande (máximo: 10000x10000 pixels)",
+      "corrupt": "Arquivo de imagem corrompido: {error}"
+    },
+    "resize": {
+      "failed": "Falha ao redimensionar imagem: {error}"
+    },
+    "thumbnail": {
+      "invalid_size": "Tamanho de thumbnail inválido: {size}",
+      "failed": "Falha ao criar thumbnail: {error}"
+    },
+    "avatar": {
+      "created_successfully": "Versões do avatar criadas com sucesso",
+      "failed": "Falha ao criar avatar: {error}"
+    },
+    "post": {
+      "created_successfully": "Versões da imagem criadas com sucesso",
+      "failed": "Falha ao processar imagem do post: {error}"
+    },
+    "optimize": {
+      "failed": "Falha ao otimizar imagem: {error}"
+    },
+    "watermark": {
+      "failed": "Falha ao adicionar marca d'água: {error}"
+    }
+  },
+  "posts": {
+    "validation": {
+      "content_or_media_required": "Conteúdo ou mídia é obrigatório",
+      "comment_required": "Conteúdo do comentário é obrigatório"
+    },
+    "create": {
+      "success": "Post criado com sucesso"
+    },
+    "list": {
+      "success": "Posts recuperados com sucesso"
+    },
+    "get": {
+      "success": "Post recuperado com sucesso"
+    },
+    "delete": {
+      "success": "Post removido com sucesso"
+    },
+    "like": {
+      "added": "Post curtido",
+      "removed": "Curtida removida"
+    },
+    "comment": {
+      "added": "Comentário adicionado com sucesso"
+    },
+    "error": {
+      "not_found": "Post não encontrado",
+      "permission_denied": "Permissão negada",
+      "unexpected": "Erro inesperado: {error}"
+    },
+    "info": {
+      "retrieved": "Informações do sistema de posts"
+    }
+  },
+  "timeline": {
+    "success": "Timeline carregada com sucesso",
+    "algorithms": {
+      "smart": "Timeline inteligente",
+      "chronological": "Ordem cronológica", 
+      "popular": "Mais populares"
+    }
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "app": {
+    "name": "Symplle",
+    "tagline": "Connect. Create. Grow.",
+    "welcome": "Welcome to Symplle"
+  },
+  "auth": {
+    "validation": {
+      "fields_required": "All fields are required",
+      "user_exists": "Email or username already exists",
+      "email_password_required": "Email and password are required",
+      "username_email_required": "Username and email are required"
+    },    
+    "login": {
+      "title": "Login",
+      "email_placeholder": "Enter your email",
+      "password_placeholder": "Enter your password",
+      "submit": "Login",
+      "success": "Welcome back, {username}!",
+      "error": "Invalid email or password",
+      "forgot_password": "Forgot your password?",
+      "no_account": "Don't have an account?",
+      "signup_link": "Sign up here"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "username_placeholder": "Choose a username",
+      "email_placeholder": "Enter your email",
+      "password_placeholder": "Create a password",
+      "confirm_password_placeholder": "Confirm your password",
+      "submit": "Create Account",
+      "success": "Account created successfully!",
+      "error": "Failed to create account",
+      "have_account": "Already have an account?",
+      "login_link": "Login here",
+      "terms": "By signing up, you agree to our Terms of Service and Privacy Policy"
+    },
+    "verification": {
+      "email": {
+        "title": "Verify Your Email",
+        "subtitle": "We sent a verification code to {email}",
+        "code_placeholder": "Enter 6-digit code",
+        "submit": "Verify Email",
+        "success": "Email verified successfully!",
+        "error": "Invalid verification code",
+        "resend": "Resend code",
+        "resend_success": "Verification code sent again"
+      },
+      "phone": {
+        "title": "Verify Your Phone",
+        "subtitle": "We sent a verification code to {phone}",
+        "code_placeholder": "Enter 6-digit code",
+        "submit": "Verify Phone",
+        "success": "Phone verified successfully!",
+        "error": "Invalid verification code",
+        "resend": "Resend code",
+        "resend_success": "Verification code sent again"
+      }
+    },
+    "password": {
+      "forgot": {
+        "title": "Forgot Password",
+        "subtitle": "Enter your email to reset your password",
+        "email_placeholder": "Enter your email",
+        "submit": "Send Reset Link",
+        "success": "Reset link sent to your email",
+        "error": "Email not found"
+      },
+      "reset": {
+        "title": "Reset Password",
+        "subtitle": "Enter your new password",
+        "password_placeholder": "New password",
+        "confirm_password_placeholder": "Confirm new password",
+        "submit": "Reset Password",
+        "success": "Password reset successfully!",
+        "error": "Failed to reset password"
+      }
+    },
+    "logout": {
+      "success": "Logged out successfully",
+      "confirm": "Are you sure you want to logout?"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "edit": "Edit Profile",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "username": "Username",
+    "email": "Email",
+    "phone": "Phone",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "bio": "Bio",
+    "location": "Location",
+    "website": "Website",
+    "birthday": "Birthday",
+    "language": "Language",
+    "privacy": "Privacy Settings",
+    "notifications": "Notification Settings",
+    "account": "Account Settings",
+    "delete_account": "Delete Account",
+    "updated": "Profile updated successfully",
+    "photo": {
+      "upload": "Upload Photo",
+      "change": "Change Photo",
+      "remove": "Remove Photo",
+      "success": "Photo updated successfully",
+      "error": "Failed to upload photo"
+    }
+  },
+  "chat": {
+    "title": "Chats",
+    "new_chat": "New Chat",
+    "search": "Search chats",
+    "empty": "No chats yet",
+    "typing": "{user} is typing...",
+    "online": "Online",
+    "offline": "Offline",
+    "last_seen": "Last seen {time}",
+    "delivered": "Delivered",
+    "read": "Read",
+    "message": {
+      "placeholder": "Type a message...",
+      "send": "Send",
+      "edit": "Edit Message",
+      "delete": "Delete Message",
+      "reply": "Reply",
+      "forward": "Forward",
+      "copy": "Copy Text",
+      "deleted": "This message was deleted"
+    },
+    "group": {
+      "create": "Create Group",
+      "name": "Group Name",
+      "add_members": "Add Members",
+      "remove_member": "Remove Member",
+      "leave": "Leave Group",
+      "admin": "Admin"
+    }
+  },
+  "social": {
+    "feed": "Feed",
+    "posts": "Posts",
+    "create_post": "Create Post",
+    "share_post": "Share Post",
+    "edit_post": "Edit Post",
+    "delete_post": "Delete Post",
+    "like": "Like",
+    "unlike": "Unlike",
+    "comment": "Comment",
+    "share": "Share",
+    "save": "Save",
+    "saved": "Saved",
+    "followers": "Followers",
+    "following": "Following",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "block": "Block User",
+    "report": "Report Post",
+    "hashtags": "Hashtags",
+    "mentions": "Mentions",
+    "trending": "Trending",
+    "explore": "Explore"
+  },
+  "jobs": {
+    "title": "Jobs",
+    "search": "Search jobs",
+    "filters": "Filters",
+    "location": "Location",
+    "salary": "Salary",
+    "job_type": "Job Type",
+    "experience": "Experience Level",
+    "company": "Company",
+    "apply": "Apply Now",
+    "applied": "Applied",
+    "save_job": "Save Job",
+    "saved_jobs": "Saved Jobs",
+    "my_applications": "My Applications",
+    "job_details": "Job Details",
+    "requirements": "Requirements",
+    "benefits": "Benefits",
+    "description": "Job Description",
+    "posted": "Posted {time}",
+    "expires": "Expires {date}",
+    "network": "Professional Network",
+    "connections": "Connections",
+    "recommendations": "Recommendations",
+    "skills": "Skills",
+    "experience_title": "Experience",
+    "education": "Education",
+    "certifications": "Certifications"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "photos": "Photos",
+    "videos": "Videos",
+    "albums": "Albums",
+    "upload": "Upload",
+    "create_album": "Create Album",
+    "album_name": "Album Name",
+    "select_photos": "Select Photos",
+    "delete": "Delete",
+    "download": "Download",
+    "share": "Share",
+    "edit": "Edit",
+    "view_original": "View Original",
+    "slideshow": "Slideshow",
+    "uploaded": "Uploaded {time}",
+    "size": "Size: {size}",
+    "resolution": "Resolution: {resolution}"
+  },
+  "videos": {
+    "title": "Videos",
+    "upload": "Upload Video",
+    "play": "Play",
+    "pause": "Pause",
+    "fullscreen": "Fullscreen",
+    "volume": "Volume",
+    "quality": "Quality",
+    "speed": "Playback Speed",
+    "likes": "Likes",
+    "views": "Views",
+    "duration": "Duration",
+    "uploaded": "Uploaded {time}",
+    "creator": "Creator",
+    "subscribe": "Subscribe",
+    "subscribed": "Subscribed",
+    "playlist": "Add to Playlist",
+    "download": "Download",
+    "report": "Report Video"
+  },
+  "countries": {
+    "select": "Select Country",
+    "search": "Search countries",
+    "popular": "Popular Countries"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "mark_read": "Mark as Read",
+    "mark_all_read": "Mark All as Read",
+    "clear": "Clear All",
+    "empty": "No notifications",
+    "types": {
+      "message": "New message from {user}",
+      "like": "{user} liked your post",
+      "comment": "{user} commented on your post",
+      "follow": "{user} started following you",
+      "job_match": "New job match: {job}",
+      "connection": "New connection request from {user}"
+    }
+  },
+  "search": {
+    "placeholder": "Search...",
+    "results": "Search Results",
+    "no_results": "No results found",
+    "recent": "Recent Searches",
+    "clear_recent": "Clear Recent",
+    "filters": "Filters",
+    "sort_by": "Sort By",
+    "relevance": "Relevance",
+    "date": "Date",
+    "popularity": "Popularity"
+  },
+  "settings": {
+    "title": "Settings",
+    "account": "Account",
+    "privacy": "Privacy",
+    "notifications": "Notifications",
+    "language": "Language & Region",
+    "theme": "Theme",
+    "data": "Data & Storage",
+    "help": "Help & Support",
+    "about": "About",
+    "logout": "Logout",
+    "version": "Version {version}"
+  },
+  "errors": {
+    "network": "Network connection error",
+    "server": "Server error. Please try again later",
+    "not_found": "Content not found",
+    "unauthorized": "You are not authorized to perform this action",
+    "forbidden": "Access forbidden",
+    "validation": "Please check your input and try again",
+    "upload": "File upload failed",
+    "generic": "Something went wrong. Please try again"
+  },
+  "success": {
+    "saved": "Saved successfully",
+    "updated": "Updated successfully",
+    "created": "Created successfully",
+    "deleted": "Deleted successfully",
+    "uploaded": "Uploaded successfully",
+    "sent": "Sent successfully"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "share": "Share",
+    "copy": "Copy",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "retry": "Retry",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "optional": "Optional",
+    "required": "Required",
+    "or": "or",
+    "and": "and",
+    "more": "More",
+    "less": "Less",
+    "show_all": "Show All",
+    "show_less": "Show Less"
+  },
+  "upload": {
+    "error": {
+      "no_file": "No file was uploaded",
+      "user_id_required": "User ID is required",
+      "invalid_user_id": "Invalid user ID",
+      "user_chat_required": "User ID and chat ID are required",
+      "file_path_required": "File path is required",
+      "file_not_found": "File not found",
+      "permission_denied": "Permission denied for this file",
+      "unexpected": "Unexpected error: {error}"
+    },
+    "validation": {
+      "no_file": "No file selected",
+      "invalid_filename": "Invalid filename",
+      "invalid_extension": "Extension '{extension}' not allowed. Use: {allowed}",
+      "invalid_mime_type": "File type '{mime_type}' not supported",
+      "file_too_large": "File too large ({size}). Maximum size: {max_size}",
+      "empty_file": "File is empty"
+    },
+    "avatar": {
+      "success": "Avatar uploaded and processed successfully"
+    },
+    "post": {
+      "success": "Post image uploaded successfully"
+    },
+    "document": {
+      "success": "Document uploaded successfully"
+    },
+    "chat": {
+      "success": "Chat file uploaded successfully"
+    },
+    "delete": {
+      "success": "File deleted successfully"
+    },
+    "optimize": {
+      "success": "Image optimized successfully"
+    },
+    "files": {
+      "retrieved": "Files retrieved successfully"
+    },
+    "info": {
+      "retrieved": "Upload system information"
+    }
+  },
+  "image": {
+    "validation": {
+      "unsupported_format": "Format '{format}' not supported",
+      "too_small": "Image too small (minimum: 10x10 pixels)",
+      "too_large": "Image too large (maximum: 10000x10000 pixels)",
+      "corrupt": "Corrupt image file: {error}"
+    },
+    "resize": {
+      "failed": "Failed to resize image: {error}"
+    },
+    "thumbnail": {
+      "invalid_size": "Invalid thumbnail size: {size}",
+      "failed": "Failed to create thumbnail: {error}"
+    },
+    "avatar": {
+      "created_successfully": "Avatar versions created successfully",
+      "failed": "Failed to create avatar: {error}"
+    },
+    "post": {
+      "created_successfully": "Image versions created successfully",
+      "failed": "Failed to process post image: {error}"
+    },
+    "optimize": {
+      "failed": "Failed to optimize image: {error}"
+    },
+    "watermark": {
+      "failed": "Failed to add watermark: {error}"
+    }
+  },
+  "posts": {
+    "validation": {
+      "content_or_media_required": "Content or media is required",
+      "comment_required": "Comment content is required"
+    },
+    "create": {
+      "success": "Post created successfully"
+    },
+    "list": {
+      "success": "Posts retrieved successfully"
+    },
+    "get": {
+      "success": "Post retrieved successfully"
+    },
+    "delete": {
+      "success": "Post deleted successfully"
+    },
+    "like": {
+      "added": "Post liked",
+      "removed": "Post unliked"
+    },
+    "comment": {
+      "added": "Comment added successfully"
+    },
+    "error": {
+      "not_found": "Post not found",
+      "permission_denied": "Permission denied",
+      "unexpected": "Unexpected error: {error}"
+    },
+    "info": {
+      "retrieved": "Posts system information"
+    }
+  },
+  "timeline": {
+    "success": "Timeline loaded successfully",
+    "algorithms": {
+      "smart": "Smart Timeline",
+      "chronological": "Chronological Order", 
+      "popular": "Most Popular"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "currency": {
+    "symbol": "R$",
+    "decimal_separator": ",",
+    "thousands_separator": ".",
+    "format": "{symbol} {amount}",
+    "decimals": 2,
+    "currencies": {
+      "BRL": "R$",
+      "USD": "US$",
+      "EUR": "€",
+      "GBP": "£",
+      "JPY": "¥",
+      "CAD": "CA$",
+      "AUD": "A$"
+    }
+  },
+  "date": {
+    "short": "dd/MM/yyyy",
+    "medium": "dd 'de' MMM 'de' yyyy",
+    "long": "dd 'de' MMMM 'de' yyyy",
+    "time_12": "HH:mm",
+    "time_24": "HH:mm",
+    "datetime": "dd 'de' MMM 'de' yyyy 'às' HH:mm",
+    "weekdays": ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"],
+    "weekdays_short": ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"],
+    "months": ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
+    "months_short": ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
+    "am_pm": ["", ""],
+    "first_day_of_week": 1
+  },
+  "numbers": {
+    "decimal_separator": ",",
+    "thousands_separator": ".",
+    "negative_format": "-{number}",
+    "percentage_format": "{number}%"
+  },
+  "phone": {
+    "format": "({area}) {prefix} {number}-{suffix}",
+    "country_code": "+55",
+    "mask": "(##) # ####-####",
+    "mask_landline": "(##) ####-####",
+    "validation_regex": "^\\+?55\\d{10,11}$",
+    "examples": [
+      "(11) 9 9999-9999",
+      "(11) 3333-4444",
+      "+55 (11) 9 9999-9999"
+    ]
+  },
+  "address": {
+    "format": "{street}, {number}\n{neighborhood}\n{city} - {state}\nCEP: {zip}",
+    "zip_code_format": "#####-###",
+    "states": ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
+  },
+  "social": {
+    "distance_units": "kilometers",
+    "temperature_unit": "celsius",
+    "measurement_system": "metric"
+  },
+  "relative_time": {
+    "now": "agora",
+    "seconds": "há {n} segundo|há {n} segundos",
+    "minute": "há {n} minuto|há {n} minutos",
+    "hour": "há {n} hora|há {n} horas",
+    "day": "há {n} dia|há {n} dias",
+    "week": "há {n} semana|há {n} semanas",
+    "month": "há {n} mês|há {n} meses",
+    "year": "há {n} ano|há {n} anos",
+    "future": {
+      "seconds": "em {n} segundo|em {n} segundos",
+      "minute": "em {n} minuto|em {n} minutos",
+      "hour": "em {n} hora|em {n} horas",
+      "day": "em {n} dia|em {n} dias",
+      "week": "em {n} semana|em {n} semanas",
+      "month": "em {n} mês|em {n} meses",
+      "year": "em {n} ano|em {n} anos"
+    }
+  },
+  "validation": {
+    "email_regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    "password_min_length": 8,
+    "username_min_length": 3,
+    "username_max_length": 30,
+    "username_regex": "^[a-zA-Z0-9_]+$",
+    "cpf_regex": "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+    "cnpj_regex": "^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$"
+  },
+  "file_size": {
+    "units": ["B", "KB", "MB", "GB", "TB"],
+    "decimal_places": 2
+  },
+  "professional": {
+    "salary_format": "R$ {min_amount} - R$ {max_amount}",
+    "salary_period": "por mês",
+    "experience_levels": [
+      "Júnior",
+      "Pleno", 
+      "Sênior",
+      "Especialista",
+      "Gerencial"
+    ],
+    "job_types": [
+      "CLT",
+      "PJ",
+      "Freelancer",
+      "Estágio",
+      "Temporário"
+    ]
+  },
+  "documents": {
+    "cpf": {
+      "format": "###.###.###-##",
+      "label": "CPF"
+    },
+    "cnpj": {
+      "format": "##.###.###/####-##",
+      "label": "CNPJ"
+    },
+    "rg": {
+      "label": "RG"
+    }
+  }
+}
