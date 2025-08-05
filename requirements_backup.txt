@@ -10,7 +10,6 @@ Flask==2.3.3
 Flask-SQLAlchemy==3.0.5
 Flask-Migrate==4.0.5
 Flask-CORS==4.0.0
-Flask-JWT-Extended==4.5.3
 Flask-Login==0.6.3
 Flask-Mail==0.9.1
 
@@ -20,10 +19,6 @@ Flask-Mail==0.9.1
 python-socketio==5.10.0
 Flask-SocketIO==5.3.6
 eventlet==0.33.3
-greenlet==2.0.2
-bleach==6.0.0
-emoji==2.8.0
-prometheus-client==0.17.1
 
 # =============================================================================
 # DATABASE & CACHE
@@ -119,7 +114,6 @@ faker==19.6.2
 # =============================================================================
 flask-debugtoolbar==0.13.1
 python-decouple==3.8
-flask-restx==1.1.0
 
 # =============================================================================
 # API DOCUMENTATION

@@ -1,76 +1,238 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
+# =============================================================================
+# .GITIGNORE
+# =============================================================================
 
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
-
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
-# Arquivos e pastas do Flutter
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.packages
-.pub/
-build/
-ios/Pods/
-android/.gradle/
-
-# Arquivos do VS Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# Arquivos do ambiente virtual Python
-venv/
-venv_new/
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Arquivos de ambiente
+# Virtual Environment
+venv/
+venv_new/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables
 .env
-*.db
+.env.local
+.env.development
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Logs
 *.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads
+uploads/
+media/
+static/uploads/
+
+# Docker
+.dockerignore
+
+# Backup files
+backups/
+*.sql.backup
+*.dump
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# AWS
+.aws/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# SSL Certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# Build artifacts
+build/
+dist/
+
+# Documentation builds
+docs/_build/
+
+# Local configuration overrides
+config.local.py
+settings.local.py
+
+# Test files
+.tox/
+.nox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Flask
+instance/
+.webassets-cache
+
+# Scrapy
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Local data files
+data/
+*.csv
+*.json
+!requirements.txt
+!package.json
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Redis dump
+dump.rdb
+
+# Elasticsearch
+elasticsearch/
+
+# Node modules (se usar ferramentas Node)
+node_modules/
+
+# Yarn
+yarn-error.log
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# File uploads
+uploads/*
+!uploads/.gitkeep
+
+# SSL/TLS
+ssl/
+certs/
+
+# Monitoring
+newrelic.ini

@@ -32,6 +32,16 @@ from datetime import datetime
 from flask_cors import CORS
 from flask_migrate import Migrate
 
+# 💬 CHAT SYSTEM: Importações mínimas necessárias
+try:
+    from flask_socketio import SocketIO
+    CHAT_AVAILABLE = True
+    print("✅ Flask-SocketIO carregado - Chat System disponível!")
+except ImportError:
+    print("⚠️ Flask-SocketIO não encontrado - Chat System indisponível")
+    CHAT_AVAILABLE = False
+    SocketIO = None
+
 # AJUSTADO: Caminhos para imports (main.py está em src/)
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))  # Pasta pai para acessar raiz
 
@@ -43,6 +53,23 @@ from src.routes.email_routes import email_routes
 from src.routes.profile_routes import profile_bp
 from routes.posts_routes import posts_bp
 #from routes.timeline_routes import timeline_bp
+
+# 💬 CHAT SYSTEM: Importar rotas e eventos do chat (opcional)
+if CHAT_AVAILABLE:
+    try:
+        from routes.chat_routes import chat_bp
+        print("✅ Chat routes carregados!")
+        try:
+            from events.chat_events import register_chat_events
+            print("✅ Chat events carregados!")
+        except ImportError:
+            print("⚠️ Chat events não encontrados - continuando só com REST API")
+            register_chat_events = None
+    except ImportError as e:
+        print(f"⚠️ Chat routes não encontrados: {e} - continuando sem chat")
+        CHAT_AVAILABLE = False
+        chat_bp = None
+        register_chat_events = None
 
 # Import do middleware auth (simplificado)
 try:
@@ -99,6 +126,30 @@ print(f"🗄️ Banco configurado em: {db_path}")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate = Migrate(app, db)
+
+# 💬 CHAT SYSTEM: Inicializar SocketIO se disponível
+if CHAT_AVAILABLE and SocketIO:
+    socketio = SocketIO(
+        app,
+        cors_allowed_origins="*",
+        async_mode='eventlet',
+        logger=True,
+        engineio_logger=True
+    )
+    print("✅ SocketIO inicializado para Chat System!")
+    
+    # Registrar eventos do chat se disponível
+    if register_chat_events:
+        try:
+            register_chat_events(socketio)
+            print("✅ Chat events registrados!")
+        except Exception as e:
+            print(f"⚠️ Erro ao registrar chat events: {e}")
+    else:
+        print("⚠️ Chat events não disponíveis - SocketIO funcionando sem chat events")
+else:
+    socketio = None
+    print("⚠️ SocketIO não disponível - Chat System desabilitado")
 
 # 🌍 ADICIONAR: Inicializar sistema i18n
 if I18N_AVAILABLE:
@@ -167,6 +218,16 @@ app.register_blueprint(profile_bp, url_prefix='/api')
 app.register_blueprint(upload_bp)
 app.register_blueprint(posts_bp)
 #app.register_blueprint(timeline_bp)
+
+# 💬 CHAT SYSTEM: Registrar blueprint do chat se disponível
+if CHAT_AVAILABLE and chat_bp:
+    try:
+        app.register_blueprint(chat_bp, url_prefix='/api')
+        print("✅ Chat blueprint registrado em /api/chat/*")
+    except Exception as e:
+        print(f"⚠️ Erro ao registrar chat blueprint: {e}")
+else:
+    print("⚠️ Chat blueprint não disponível")
 
 # 🌍 ADICIONAR: Rotas específicas do sistema i18n
 @app.route('/api/i18n/info')
@@ -417,19 +478,27 @@ def jwt_login():
 
 @app.route('/health', methods=['GET'])
 def health_check():
-    """Health check com informações de segurança e i18n"""
+    """Health check com informações de segurança, i18n e chat"""
     try:
         # Verificar conexão com banco
         db.session.execute(db.text('SELECT 1'))
         
+        # Features disponíveis
+        features = ['JWT Auth', 'Security Headers']
+        if I18N_AVAILABLE:
+            features.append('i18n/L10n')
+        if CHAT_AVAILABLE:
+            features.extend(['Real-time Chat', 'WebSocket'])
+        
         health_data = {
             'status': 'healthy',
-            'version': '1.0.0-jwt-i18n-src',
+            'version': '1.0.0-jwt-i18n-chat-src',
             'database': 'connected',
             'security': 'jwt-enabled',
             'i18n': I18N_AVAILABLE,
+            'chat_system': CHAT_AVAILABLE,
             'current_locale': getattr(g, 'locale', 'en_US') if I18N_AVAILABLE else 'en_US',
-            'features': ['JWT Auth', 'Security Headers'] + (['i18n/L10n'] if I18N_AVAILABLE else []),
+            'features': features,
             'main_location': 'src/'
         }
         
@@ -441,7 +510,7 @@ def health_check():
             return jsonify({
                 'success': True,
                 'data': health_data,
-                'message': 'System healthy (basic mode)'
+                'message': 'System healthy'
             })
             
     except Exception as e:
@@ -464,24 +533,34 @@ def health_check():
 @app.route('/')
 def index():
     """Página inicial com informações localizadas"""
+    endpoints = {
+        'auth': '/api/auth',
+        'i18n': '/api/i18n',
+        'health': '/health'
+    }
+    
+    # Adicionar endpoint do chat se disponível
+    if CHAT_AVAILABLE:
+        endpoints['chat'] = '/api/chat'
+        endpoints['websocket'] = '/socket.io/'
+    
     if I18N_AVAILABLE:
         return jsonify(i18n_utils.format_api_response({
             'app': _('app.name'),
             'message': _('app.welcome'),
-            'version': '1.0.0-i18n-src',
+            'version': '1.0.0-i18n-chat-src',
             'main_location': 'src/',
-            'endpoints': {
-                'auth': '/api/auth',
-                'i18n': '/api/i18n',
-                'health': '/health'
-            }
+            'chat_system': CHAT_AVAILABLE,
+            'endpoints': endpoints
         }, _('app.welcome')))
     else:
         return jsonify({
             "message": "Symplle API is running with JWT!",
-            "version": "1.0.0-basic-src",
+            "version": "1.0.0-basic-chat-src",
             "main_location": "src/",
-            "i18n": "not available"
+            "i18n": "not available",
+            "chat_system": CHAT_AVAILABLE,
+            "endpoints": endpoints
         })
 
 @app.route('/api/create-profile', methods=['POST'])
@@ -618,19 +697,433 @@ def create_tables():
             "message": f"Error creating tables: {str(e)}"
         }), 500
 
+@app.route('/chat-test')
+def chat_test():
+    """Página de teste do sistema de chat"""
+    return '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symplle Chat System - WebSocket Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .status {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .connected { background: rgba(76, 175, 80, 0.3); }
+        .disconnected { background: rgba(244, 67, 54, 0.3); }
+        .info { background: rgba(33, 150, 243, 0.3); }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 16px;
+        }
+        
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .message {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .timestamp {
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Symplle Chat System Test</h1>
+        
+        <div id="connectionStatus" class="status disconnected">
+            ❌ Disconnected
+        </div>
+        
+        <div class="test-section">
+            <h3>📡 Connection Tests</h3>
+            <div class="grid">
+                <button onclick="connect()">🔌 Connect</button>
+                <button onclick="disconnect()">❌ Disconnect</button>
+                <button onclick="ping()">🏓 Ping Server</button>
+                <button onclick="getServerInfo()">ℹ️ Server Info</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🏠 Room Tests</h3>
+            <input type="number" id="roomId" placeholder="Room ID" value="1">
+            <input type="text" id="username" placeholder="Username" value="TestUser">
+            <div class="grid">
+                <button onclick="joinRoom()">👥 Join Room</button>
+                <button onclick="leaveRoom()">👋 Leave Room</button>
+                <button onclick="getRoomInfo()">📋 Room Info</button>
+                <button onclick="startTyping()">⌨️ Start Typing</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>💬 Message Tests</h3>
+            <textarea id="messageContent" placeholder="Type your message here..." rows="3">Hello from Symplle Chat System! 🚀</textarea>
+            <button onclick="sendMessage()" style="width: 100%; margin: 10px 0;">📤 Send Message</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>📨 Messages & Events</h3>
+            <div id="messages"></div>
+            <button onclick="clearMessages()" style="background: linear-gradient(45deg, #f44336, #d32f2f);">🗑️ Clear Messages</button>
+        </div>
+    </div>
+
+    <script>
+        let socket = null;
+        
+        function addMessage(type, content, data = null) {
+            const messages = document.getElementById('messages');
+            const timestamp = new Date().toLocaleTimeString();
+            const message = document.createElement('div');
+            message.className = 'message';
+            
+            let dataStr = data ? `\\n📊 Data: ${JSON.stringify(data, null, 2)}` : '';
+            message.innerHTML = `
+                <strong>${type}:</strong> ${content}${dataStr}
+                <div class="timestamp">⏰ ${timestamp}</div>
+            `;
+            
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        }
+        
+        function updateStatus(connected, message) {
+            const status = document.getElementById('connectionStatus');
+            status.className = `status ${connected ? 'connected' : 'disconnected'}`;
+            status.textContent = `${connected ? '✅' : '❌'} ${message}`;
+        }
+        
+        function connect() {
+            if (socket && socket.connected) {
+                addMessage('⚠️ Warning', 'Already connected');
+                return;
+            }
+            
+            socket = io();
+            
+            socket.on('connect', () => {
+                addMessage('🔌 Connected', 'Successfully connected to Symplle Chat System!');
+                updateStatus(true, 'Connected to Chat System');
+            });
+            
+            socket.on('disconnect', () => {
+                addMessage('❌ Disconnected', 'Disconnected from server');
+                updateStatus(false, 'Disconnected');
+            });
+            
+            socket.on('status', (data) => {
+                addMessage('📡 Status', 'Server status received', data);
+            });
+            
+            socket.on('pong', (data) => {
+                addMessage('🏓 Pong', 'Server responded to ping', data);
+            });
+            
+            socket.on('room_joined', (data) => {
+                addMessage('👥 Room Joined', 'Successfully joined room', data);
+            });
+            
+            socket.on('room_left', (data) => {
+                addMessage('👋 Room Left', 'Left room successfully', data);
+            });
+            
+            socket.on('user_joined', (data) => {
+                addMessage('👤 User Joined', `${data.username} joined the room`, data);
+            });
+            
+            socket.on('user_left', (data) => {
+                addMessage('👤 User Left', `${data.username} left the room`, data);
+            });
+            
+            socket.on('new_message', (data) => {
+                addMessage('💬 New Message', `${data.username}: ${data.content}`, data);
+            });
+            
+            socket.on('message_sent', (data) => {
+                addMessage('✅ Message Sent', 'Message delivered successfully', data);
+            });
+            
+            socket.on('user_typing', (data) => {
+                const action = data.typing ? 'started' : 'stopped';
+                addMessage('⌨️ Typing', `${data.username} ${action} typing`, data);
+            });
+            
+            socket.on('room_info', (data) => {
+                addMessage('📋 Room Info', 'Room information received', data);
+            });
+            
+            socket.on('error', (data) => {
+                addMessage('❌ Error', 'Server error received', data);
+            });
+        }
+        
+        function disconnect() {
+            if (socket) {
+                socket.disconnect();
+                socket = null;
+                updateStatus(false, 'Manually disconnected');
+                addMessage('❌ Disconnected', 'Manually disconnected from server');
+            }
+        }
+        
+        function ping() {
+            if (!socket || !socket.connected) {
+                addMessage('❌ Error', 'Not connected to server');
+                return;
+            }
+            
+            socket.emit('ping');
+            addMessage('🏓 Ping', 'Sent ping to server');
+        }
+        
+        function joinRoom() {
+            if (!socket || !socket.connected) {
+                addMessage('❌ Error', 'Not connected to server');
+                return;
+            }
+            
+            const roomId = document.getElementById('roomId').value;
+            const username = document.getElementById('username').value;
+            
+            if (!roomId || !username) {
+                addMessage('❌ Error', 'Please enter room ID and username');
+                return;
+            }
+            
+            socket.emit('join_room', {
+                room_id: parseInt(roomId),
+                username: username
+            });
+            
+            addMessage('👥 Joining', `Attempting to join room ${roomId} as ${username}`);
+        }
+        
+        function leaveRoom() {
+            if (!socket || !socket.connected) {
+                addMessage('❌ Error', 'Not connected to server');
+                return;
+            }
+            
+            const roomId = document.getElementById('roomId').value;
+            const username = document.getElementById('username').value;
+            
+            socket.emit('leave_room', {
+                room_id: parseInt(roomId),
+                username: username
+            });
+            
+            addMessage('👋 Leaving', `Leaving room ${roomId}`);
+        }
+        
+        function sendMessage() {
+            if (!socket || !socket.connected) {
+                addMessage('❌ Error', 'Not connected to server');
+                return;
+            }
+            
+            const roomId = document.getElementById('roomId').value;
+            const username = document.getElementById('username').value;
+            const content = document.getElementById('messageContent').value;
+            
+            if (!roomId || !username || !content) {
+                addMessage('❌ Error', 'Please fill all fields');
+                return;
+            }
+            
+            socket.emit('send_message', {
+                room_id: parseInt(roomId),
+                username: username,
+                content: content,
+                type: 'text'
+            });
+            
+            addMessage('📤 Sending', `Sending message to room ${roomId}: "${content}"`);
+        }
+        
+        function startTyping() {
+            if (!socket || !socket.connected) {
+                addMessage('❌ Error', 'Not connected to server');
+                return;
+            }
+            
+            const roomId = document.getElementById('roomId').value;
+            const username = document.getElementById('username').value;
+            
+            socket.emit('typing_start', {
+                room_id: parseInt(roomId),
+                username: username
+            });
+            
+            addMessage('⌨️ Typing', 'Started typing indicator');
+            
+            // Stop typing after 3 seconds
+            setTimeout(() => {
+                socket.emit('typing_stop', {
+                    room_id: parseInt(roomId),
+                    username: username
+                });
+                addMessage('⌨️ Typing', 'Stopped typing indicator');
+            }, 3000);
+        }
+        
+        function getRoomInfo() {
+            if (!socket || !socket.connected) {
+                addMessage('❌ Error', 'Not connected to server');
+                return;
+            }
+            
+            const roomId = document.getElementById('roomId').value;
+            
+            socket.emit('get_room_info', {
+                room_id: parseInt(roomId)
+            });
+            
+            addMessage('📋 Requesting', `Getting info for room ${roomId}`);
+        }
+        
+        function clearMessages() {
+            document.getElementById('messages').innerHTML = '';
+        }
+        
+        function getServerInfo() {
+            // Test REST API endpoints
+            fetch('/api/chat/info')
+                .then(response => response.json())
+                .then(data => {
+                    addMessage('ℹ️ Server Info', 'Chat system information', data);
+                })
+                .catch(error => {
+                    addMessage('❌ Error', 'Failed to get server info', error);
+                });
+        }
+        
+        // Auto-connect on page load
+        window.onload = function() {
+            addMessage('🚀 Welcome', 'Symplle Chat System WebSocket Test Page loaded');
+            addMessage('💡 Tip', 'Click "Connect" to start testing the chat system');
+        };
+    </script>
+</body>
+</html>'''
+
 if __name__ == '__main__':
     print("\n🚀 SYMPLLE API STARTING...")
     print(f"📁 Main location: src/")
     print(f"🌍 i18n Support: {'✅ PT-BR, EN-US, ES-ES' if I18N_AVAILABLE else '❌ Not available'}")
+    print(f"💬 Chat System: {'✅ Real-time chat available' if CHAT_AVAILABLE else '❌ Not available'}")
     print(f"🗄️  Database: {db_path}")
     print(f"🔐 CORS Enabled")
-    print(f"📱 API Version: v1.0.0-i18n-src")
+    print(f"📱 API Version: v1.0.0-i18n-chat-src")
     
     if I18N_AVAILABLE:
-        print("\n📋 NOVOS ENDPOINTS i18n:")
+        print("\n📋 ENDPOINTS i18n:")
         print("   GET  /api/i18n/info        - Informações i18n")
         print("   POST /api/i18n/change-locale - Mudar idioma")
         print("   GET  /api/i18n/demo        - Demo i18n/L10n")
+    
+    if CHAT_AVAILABLE:
+        print("\n💬 ENDPOINTS Chat System:")
+        print("   GET  /api/chat/info        - Informações chat")
+        print("   POST /api/chat/rooms       - Criar room")
+        print("   GET  /api/chat/rooms       - Listar rooms")
+        print("   WS   /socket.io/           - WebSocket connection")
+        
+        print("\n🧪 Teste chat API:")
+        print("   curl http://localhost:5000/api/chat/info")
+    
+    if I18N_AVAILABLE:
         print("\n🌐 Teste mudar idioma:")
         print("   curl -X POST http://localhost:5000/api/i18n/change-locale \\")
         print("        -H 'Content-Type: application/json' \\")
@@ -642,4 +1135,17 @@ if __name__ == '__main__':
     
     with app.app_context():
         db.create_all()  # Criar tabelas no banco de dados
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    
+    # 💬 CHAT SYSTEM: Usar socketio.run se disponível, senão app.run
+    if CHAT_AVAILABLE and socketio:
+        print("🚀 Starting with SocketIO support...")
+        socketio.run(
+            app,
+            host='0.0.0.0',
+            port=5000,
+            debug=True,
+            allow_unsafe_werkzeug=True
+        )
+    else:
+        print("🚀 Starting without SocketIO support...")
+        app.run(host='0.0.0.0', port=5000, debug=True)

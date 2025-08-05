@@ -1,0 +1,36 @@
+bezerra@Rodrigos-MacBook-Pro symplle_backend % aws rds create-db-subnet-group \
+    --db-subnet-group-name symplle-prod-subnet-group \
+    --db-subnet-group-description "Symplle Production DB Subnet Group" \
+    --subnet-ids subnet-029b223903c7ab38b subnet-005ad949c40bd5dbc \
+    --tags Key=Project,Value=Symplle Key=Environment,Value=Production
+{
+    "DBSubnetGroup": {
+        "DBSubnetGroupName": "symplle-prod-subnet-group",
+        "DBSubnetGroupDescription": "Symplle Production DB Subnet Group",
+        "VpcId": "vpc-0ac4bb9bdd9cbf5dc",
+        "SubnetGroupStatus": "Complete",
+        "Subnets": [
+            {
+                "SubnetIdentifier": "subnet-005ad949c40bd5dbc",
+                "SubnetAvailabilityZone": {
+                    "Name": "us-east-1b"
+                },
+                "SubnetOutpost": {},
+                "SubnetStatus": "Active"
+            },
+            {
+                "SubnetIdentifier": "subnet-029b223903c7ab38b",
+                "SubnetAvailabilityZone": {
+                    "Name": "us-east-1a"
+                },
+                "SubnetOutpost": {},
+                "SubnetStatus": "Active"
+            }
+        ],
+        "DBSubnetGroupArn": "arn:aws:rds:us-east-1:800712212841:subgrp:symplle-prod-subnet-group",
+        "SupportedNetworkTypes": [
+            "IPV4"
+        ]
+    }
+}
+(END)
